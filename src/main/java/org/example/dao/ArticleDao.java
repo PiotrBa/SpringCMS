@@ -31,10 +31,15 @@ public class ArticleDao {
 
     public List<Article> findAll(){
         TypedQuery<Article> query = entityManager.createQuery("SELECT a FROM Article a", Article.class);
-        List<Article> articleList = query.getResultList();
-        return articleList;
+        return query.getResultList();
     }
 
+
+    public List<Article> findLast5Articles(){
+        TypedQuery<Article> query = entityManager.createQuery("SELECT a FROM Article a ORDER BY a.created DESC", Article.class);
+        query.setMaxResults(5);
+        return query.getResultList();
+    }
 
 
 }
