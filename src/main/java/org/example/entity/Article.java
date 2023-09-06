@@ -27,8 +27,6 @@ public class Article {
     @OneToMany
     @JoinTable(name = "article_category", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories = new ArrayList<>();
-
-    @Lob
     private String content;
 
     @Column(updatable = false)
