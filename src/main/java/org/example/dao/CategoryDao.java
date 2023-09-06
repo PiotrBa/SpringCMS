@@ -4,9 +4,10 @@ import org.example.entity.Category;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -29,4 +30,9 @@ public class CategoryDao {
     }
 
 
+    public List<Category> findAll(){
+        TypedQuery<Category> query = entityManager.createQuery("SELECT c FROM Category c", Category.class);
+        List<Category> categoriesList = query.getResultList();
+        return categoriesList;
+    }
 }
