@@ -35,12 +35,11 @@ public class Article {
     private LocalDateTime created;
     private LocalDateTime updated;
 
-   @PrePersist
+
     protected void onCreate(){
         created = LocalDateTime.now();
     }
 
-   @PrePersist
     protected void onUpdate(){
         updated = LocalDateTime.now();
     }
