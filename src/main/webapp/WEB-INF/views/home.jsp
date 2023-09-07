@@ -5,7 +5,7 @@
     <title>Home Page</title>
 </head>
 <body>
-<h1>Ostatnie artykuły</h1>
+<h1>Latest articles</h1>
 
 <table>
     <thead>
