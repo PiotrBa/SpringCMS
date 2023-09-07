@@ -10,9 +10,9 @@
 <table>
     <thead>
     <tr>
-        <th>Tytuł</th>
-        <th>Data dodania</th>
-        <th>Zawartość</th>
+        <th>Title</th>
+        <th>Date added</th>
+        <th>Contents</th>
     </tr>
     </thead>
     <tbody>
