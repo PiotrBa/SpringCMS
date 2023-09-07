@@ -1,0 +1,27 @@
+### GET - Display all categories
+GET http://localhost:8080/categories
+
+
+### POST - Add a new category
+POST http://localhost:8080/categories
+Content-Type: application/json
+
+{
+  "name": "Category no3",
+  "description": "This is a category no3"
+}
+
+
+### PUT - Edit an existing category
+PUT http://localhost:8080/categories/1
+Content-Type: application/json
+
+{
+  "name": "Updated Category",
+  "description": "This is an updated category"
+}
+
+
+### DELETE - Delete a category
+DELETE http://localhost:8080/categories/1
+

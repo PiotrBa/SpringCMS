@@ -29,6 +29,9 @@ public class CategoryDao {
         entityManager.merge(category);
     }
 
+    public Category findById(Long id){
+        return entityManager.find(Category.class, id);
+    }
 
     public List<Category> findAll(){
         TypedQuery<Category> query = entityManager.createQuery("SELECT c FROM Category c", Category.class);
