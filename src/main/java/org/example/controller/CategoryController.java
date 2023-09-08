@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
 @Controller
@@ -30,11 +31,6 @@ public class CategoryController {
                 .map(Category::toString)
                 .collect(Collectors.joining("\n"));
     }
-
-
-
-
-
     @GetMapping("/add")
     public String showAddForm(Model model){
         model.addAttribute("category", new Category());
@@ -47,14 +43,8 @@ public class CategoryController {
         category.setDescription(description);
         categoryDao.saveCategory(category);
         return category.toString();
-        //return "redirect:/categories";
 
     }
-
-
-
-
-
     @GetMapping("/edit/{id}")
     public String showEditCadegory(@PathVariable Long id, Model model){
         Category category = categoryDao.findById(id);
@@ -67,5 +57,11 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
-
+    @DeleteMapping("/delete/{id}")
+    public String deleteCategory(@PathVariable Long id){
+       Category category = categoryDao.findById(id);
+       categoryDao.deleteCategory(category);
+       return category.toString();
+        };
 }
+
