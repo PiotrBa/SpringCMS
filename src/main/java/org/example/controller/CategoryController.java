@@ -52,9 +52,12 @@ public class CategoryController {
         return "edit-category";
     }
     @PostMapping("/edit")
-    public String editCategory(@ModelAttribute Category category){
+    public String editCategory(@RequestParam Long id, @RequestParam String name, @RequestParam String description){
+        Category category = categoryDao.findById(id);
+        category.setName(name);
+        category.setDescription(description);
         categoryDao.updateCategory(category);
-        return "redirect:/categories";
+        return category.toString();
     }
 
     @DeleteMapping("/delete/{id}")
@@ -62,6 +65,6 @@ public class CategoryController {
        Category category = categoryDao.findById(id);
        categoryDao.deleteCategory(category);
        return category.toString();
-        };
+    }
 }
 

@@ -24,8 +24,13 @@ public class AuthorDao {
         entityManager.remove(entityManager.contains(author) ? author : entityManager.merge(author));
     }
 
-    public void  update(Author author){
+    public void  updateAuthor(Author author){
         entityManager.merge(author);
+    }
+
+
+    public Author findByid(Long id){
+        return entityManager.find(Author.class, id);
     }
 
 
