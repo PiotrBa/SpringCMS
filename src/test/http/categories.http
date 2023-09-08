@@ -3,23 +3,14 @@ GET http://localhost:8080/categories
 
 
 ### POST - Add a new category
-POST http://localhost:8080/categories
-Content-Type: application/json
-
-{
-  "name": "Category no3",
-  "description": "This is a category no3"
-}
+POST http://localhost:8080/categories/add?name=Category no4&description=This is a category no4
+Content-Type: application/x-www-form-urlencoded
 
 
 ### PUT - Edit an existing category
 PUT http://localhost:8080/categories/1
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-  "name": "Updated Category",
-  "description": "This is an updated category"
-}
 
 
 ### DELETE - Delete a category
