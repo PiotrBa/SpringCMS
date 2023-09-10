@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>List of Categories</title>
+    <title>List of Articles</title>
     <style>
         body {
             background-color: #f0f0f0;
@@ -51,26 +51,31 @@
     </style>
 </head>
 <body>
-<h1>Categories</h1>
+<h1>Articles</h1>
 <table>
     <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Actions</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Content</th>
+        <th>Created</th>
+        <th>Updated</th>
     </tr>
-    <c:forEach var="category" items="${categories}">
+    <c:forEach var="article" items="${articles}">
         <tr>
-            <td>${category.id}</td>
-            <td>${category.name}</td>
-            <td>${category.description}</td>
+            <td>${article.id}</td>
+            <td>${article.title}</td>
+            <td>${article.author}</td>
+            <td>${article.content}</td>
+            <td>${article.created}</td>
+            <td>${article.updated}</td>
             <td class="action-btns">
-                <a href="categories/edit/${category.id}">Edit</a>
-                <a href="categories/delete/${category.id}">Delete</a>
+                <a href="categories/edit/${article.id}">Edit</a>
+                <a href="categories/delete/${article.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>
 </table>
-<a class="add-btn" href="categories/add">Add New Category</a>
+<a class="add-btn" href="articles/add">Add New Article</a>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import org.example.entity.Article;
+import org.example.entity.Author;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +28,12 @@ public class ArticleDao {
     public void update(Article article){
         entityManager.merge(article);
     }
+
+
+    public Article findByid(Long id){
+        return entityManager.find(Article.class, id);
+    }
+
 
 
     public List<Article> findAll(){

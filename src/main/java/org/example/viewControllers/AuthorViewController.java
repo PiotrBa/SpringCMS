@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.viewControllers;
 
 import lombok.RequiredArgsConstructor;
 import org.example.dao.AuthorDao;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/authors")
 @RequiredArgsConstructor
-public class AuthorController {
+public class AuthorViewController {
 
     private final AuthorDao authorDao;
 
@@ -42,7 +42,7 @@ public class AuthorController {
         author.setFirstName(firstName);
         author.setLastName(lastName);
         authorDao.saveAuthor(author);
-        return author.toString();
+        return "redirect:/authors";
     }
 
     @GetMapping("/edit/{id}")
@@ -58,13 +58,13 @@ public class AuthorController {
         author.setFirstName(firstName);
         author.setLastName(lastName);
         authorDao.updateAuthor(author);
-        return author.toString();
+        return "redirect:/authors";
     }
 
     @DeleteMapping("/delete/{id}")
     public String deleteAuthor(@RequestParam Long id){
         Author author = authorDao.findByid(id);
         authorDao.delete(author);
-        return author.toString();
+        return "redirect:/authors";
     }
 }

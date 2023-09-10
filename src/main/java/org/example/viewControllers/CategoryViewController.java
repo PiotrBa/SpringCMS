@@ -1,6 +1,5 @@
-package org.example.controller;
+package org.example.viewControllers;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.example.dao.CategoryDao;
 import org.example.entity.Category;
@@ -8,13 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/categories")
-public class CategoryController {
+public class CategoryViewController {
 
     private final CategoryDao categoryDao;
 
@@ -42,7 +40,7 @@ public class CategoryController {
         category.setName(name);
         category.setDescription(description);
         categoryDao.saveCategory(category);
-        return category.toString();
+        return "redirect:/categories";
 
     }
     @GetMapping("/edit/{id}")
@@ -57,14 +55,14 @@ public class CategoryController {
         category.setName(name);
         category.setDescription(description);
         categoryDao.updateCategory(category);
-        return category.toString();
+        return "redirect:/categories";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteCategory(@PathVariable Long id){
        Category category = categoryDao.findById(id);
        categoryDao.deleteCategory(category);
-       return category.toString();
+       return "redirect:/categories";
     }
 }
 
