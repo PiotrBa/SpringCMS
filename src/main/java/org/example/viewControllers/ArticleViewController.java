@@ -35,7 +35,11 @@ public class ArticleViewController {
     }
 
     @PostMapping("/add")
-    public String createPersonNewWay(Article article){
+    public String createPersonNewWay(@RequestParam String title, @RequestParam String articleAuthor, @RequestParam String content){
+        Article article = new Article();
+        article.setTitle(title);
+        article.setAuthor(articleAuthor);
+        article.setContent(content);
         articleDao.save(article);
         return "redirect:/articles";
     }
@@ -48,7 +52,11 @@ public class ArticleViewController {
     }
 
     @PostMapping("/edit")
-    public String editArticle(Article article){
+    public String editArticle(@RequestParam Long id, @RequestParam String title, @RequestParam String author, @RequestParam String content){
+        Article article = articleDao.findByid(id);
+        article.setTitle(title);
+        article.setAuthor(author);
+        article.setContent();
         articleDao.update(article);
         return "redirect:/articles";
     }
