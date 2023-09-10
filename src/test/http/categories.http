@@ -13,6 +13,6 @@ Content-Type: application/x-www-form-urlencoded
 
 
 
-### DELETE - Delete a category
-DELETE http://localhost:8080/categories/delete/1
+### GET - Delete a category
+GET http://localhost:8080/categories/delete/1
 

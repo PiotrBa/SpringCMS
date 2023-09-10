@@ -1,0 +1,18 @@
+### GET - Display all categories
+GET http://localhost:8080/articles
+
+
+### POST - Add a new category
+POST http://localhost:8080/articles/add?title=Title no1&author=This is a author no1&categories=Category no1&content=Bla bla bla no1
+Content-Type: application/x-www-form-urlencoded
+
+
+### PUT - Edit an existing category
+PUT http://localhost:8080/articles/edit/1
+Content-Type: application/x-www-form-urlencoded
+
+
+
+### GET - Delete a category
+GET http://localhost:8080/articles/delete/1
+

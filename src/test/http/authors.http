@@ -1,0 +1,18 @@
+### GET - Display all authors
+GET http://localhost:8080/authors
+
+
+### POST - Add a new author
+POST http://localhost:8080/authors/add?firstName=Author no3&lastName=This is author no3
+Content-Type: application/x-www-form-urlencoded
+
+
+### PUT - Edit an existing author
+PUT http://localhost:8080/authors/edit/1
+Content-Type: application/x-www-form-urlencoded
+
+
+
+### DELETE - Delete a author
+DELETE http://localhost:8080/authors/delete/1
+
