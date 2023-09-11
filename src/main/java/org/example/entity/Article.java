@@ -23,7 +23,7 @@ public class Article {
     private String title;
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private String articleAuthor;
+    private Article articleAuthor;
     @OneToMany
     @JoinTable(name = "article_category", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories = new ArrayList<>();

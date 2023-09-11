@@ -37,7 +37,7 @@ public class ArticleViewController {
     }
 
     @PostMapping("/add")
-    public String createPersonNewWay(@RequestParam String title, @RequestParam String articleAuthor, @RequestParam String content){
+    public String createPersonNewWay(@RequestParam String title, @RequestParam Article articleAuthor, @RequestParam String content){
         Article article = new Article();
         article.setTitle(title);
         article.setArticleAuthor(articleAuthor);
@@ -55,7 +55,7 @@ public class ArticleViewController {
     }
 
     @PostMapping("/edit")
-    public String editArticle(@RequestParam Long id, @RequestParam String title, @RequestParam String articleAuthor, @RequestParam String content){
+    public String editArticle(@RequestParam Long id, @RequestParam String title, @RequestParam Article articleAuthor, @RequestParam String content){
         Article article = articleDao.findByid(id);
         article.setTitle(title);
         article.setArticleAuthor(articleAuthor);
