@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -40,6 +42,7 @@ public class ArticleViewController {
         article.setTitle(title);
         article.setArticleAuthor(articleAuthor);
         article.setContent(content);
+        article.setCreated(LocalDateTime.now());
         articleDao.save(article);
         return "redirect:/articles";
     }
@@ -57,6 +60,7 @@ public class ArticleViewController {
         article.setTitle(title);
         article.setArticleAuthor(articleAuthor);
         article.setContent(content);
+        article.setUpdated(LocalDateTime.now());
         articleDao.update(article);
         return "redirect:/articles";
     }
