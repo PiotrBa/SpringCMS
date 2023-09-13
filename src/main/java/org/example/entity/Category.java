@@ -1,6 +1,7 @@
 package org.example.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Category {
 
     @Id
@@ -18,5 +20,6 @@ public class Category {
     private Long id;
     private String name;
     private String description;
+
 
 }

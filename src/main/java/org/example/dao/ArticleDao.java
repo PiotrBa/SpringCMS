@@ -1,7 +1,6 @@
 package org.example.dao;
 
 import org.example.entity.Article;
-import org.example.entity.Author;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
