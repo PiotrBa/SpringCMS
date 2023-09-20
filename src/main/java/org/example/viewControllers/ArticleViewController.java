@@ -2,7 +2,11 @@ package org.example.viewControllers;
 
 import lombok.RequiredArgsConstructor;
 import org.example.dao.ArticleDao;
+import org.example.dao.AuthorDao;
+import org.example.dao.CategoryDao;
 import org.example.entity.Article;
+import org.example.entity.Author;
+import org.example.entity.Category;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +21,8 @@ public class ArticleViewController {
 
 
     private final ArticleDao articleDao;
+    private final AuthorDao authorDao;
+    private final CategoryDao categoryDao;
 
     @GetMapping("/all")
     public String findAll(Model model){
@@ -37,12 +43,20 @@ public class ArticleViewController {
     }
 
     @PostMapping("/add")
-    public String createPersonNewWay(@RequestParam String title, @RequestParam Article articleAuthor, @RequestParam String content){
+    public String create(@RequestParam String title,  @RequestParam String content,
+                                     @RequestParam String name, @RequestParam String categoryName){
         Article article = new Article();
         article.setTitle(title);
-        article.setArticleAuthor(articleAuthor);
         article.setContent(content);
         article.setCreated(LocalDateTime.now());
+        Author author = new Author();
+        author.setName(name);
+        article.setAuthor(author);
+        Category category = new Category();
+        category.setName(categoryName);
+
+//        categoryDao.saveCategory(category);
+//        authorDao.saveAuthor(author);
         articleDao.save(article);
         return "redirect:/articles";
     }
@@ -55,10 +69,9 @@ public class ArticleViewController {
     }
 
     @PostMapping("/edit")
-    public String editArticle(@RequestParam Long id, @RequestParam String title, @RequestParam Article articleAuthor, @RequestParam String content){
+    public String editArticle(@RequestParam Long id, @RequestParam String title, @RequestParam String content){
         Article article = articleDao.findByid(id);
         article.setTitle(title);
-        article.setArticleAuthor(articleAuthor);
         article.setContent(content);
         article.setUpdated(LocalDateTime.now());
         articleDao.update(article);

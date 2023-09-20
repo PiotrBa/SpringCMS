@@ -38,7 +38,6 @@ public class CategoryViewController {
     public String create(@RequestParam String name, @RequestParam String description){
         Category category = new Category();
         category.setName(name);
-        category.setDescription(description);
         categoryDao.saveCategory(category);
         return "redirect:/categories";
 
@@ -53,7 +52,6 @@ public class CategoryViewController {
     public String editCategory(@RequestParam Long id, @RequestParam String name, @RequestParam String description){
         Category category = categoryDao.findById(id);
         category.setName(name);
-        category.setDescription(description);
         categoryDao.updateCategory(category);
         return "redirect:/categories";
     }

@@ -6,8 +6,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "articles")
@@ -23,10 +21,10 @@ public class Article {
     private String title;
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private Article articleAuthor;
-    @OneToMany
+    private Author author;
+    @ManyToOne
     @JoinTable(name = "article_category", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<Category> categories = new ArrayList<>();
+    private Category category;
     private String content;
 
     @Column(updatable = false)

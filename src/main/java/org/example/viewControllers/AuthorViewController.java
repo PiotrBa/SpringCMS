@@ -37,10 +37,9 @@ public class AuthorViewController {
     }
 
     @PostMapping("/add")
-    public String create(@RequestParam String firstName, @RequestParam String lastName){
+    public String create(@RequestParam String name){
         Author author = new Author();
-        author.setFirstName(firstName);
-        author.setLastName(lastName);
+        author.setName(name);
         authorDao.saveAuthor(author);
         return "redirect:/authors";
     }
@@ -53,10 +52,9 @@ public class AuthorViewController {
     }
 
     @PostMapping("/edit")
-    public String editAuthor(@RequestParam Long id, @RequestParam String firstName, @RequestParam String lastName){
+    public String editAuthor(@RequestParam Long id, @RequestParam String name){
         Author author = authorDao.findByid(id);
-        author.setFirstName(firstName);
-        author.setLastName(lastName);
+        author.setName(name);
         authorDao.updateAuthor(author);
         return "redirect:/authors";
     }
