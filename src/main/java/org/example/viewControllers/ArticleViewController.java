@@ -55,8 +55,8 @@ public class ArticleViewController {
         Category category = new Category();
         category.setName(categoryName);
 
-//        categoryDao.saveCategory(category);
-//        authorDao.saveAuthor(author);
+        categoryDao.saveCategory(category);
+        authorDao.saveAuthor(author);
         articleDao.save(article);
         return "redirect:/articles";
     }
@@ -69,10 +69,12 @@ public class ArticleViewController {
     }
 
     @PostMapping("/edit")
-    public String editArticle(@RequestParam Long id, @RequestParam String title, @RequestParam String content){
+    public String editArticle(@RequestParam Long id, @RequestParam String title, @RequestParam String content, @RequestParam String name){
         Article article = articleDao.findByid(id);
         article.setTitle(title);
         article.setContent(content);
+        Category category = categoryDao.findById(id);
+        category.setName(name);
         article.setUpdated(LocalDateTime.now());
         articleDao.update(article);
         return "redirect:/articles";

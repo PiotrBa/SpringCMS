@@ -7,46 +7,47 @@
         body {
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ccc;
-        }
-        th {
+        h1 {
             background-color: #e0e0e0;
-        }
-        td {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #d9d9d9;
-        }
-        .action-btns a {
-            margin-right: 10px;
-            padding: 5px 10px;
-            text-decoration: none;
-            color: #595959;
-            border: 1px solid #b3b3b3;
+            padding: 10px;
             border-radius: 5px;
         }
-        .action-btns a:hover {
-            background-color: #a6a6a6;
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            text-align: center;
         }
-        .add-btn {
-            padding: 10px;
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
             background-color: #595959;
             color: white;
-            text-decoration: none;
+            padding: 10px 20px;
+            border: none;
             border-radius: 5px;
+            cursor: pointer;
         }
-        .add-btn:hover {
+        input[type="submit"]:hover {
             background-color: #404040;
+        }
+        a {
+            text-decoration: none;
+            color: #595959;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -63,7 +64,6 @@
         <tr>
             <td>${category.id}</td>
             <td>${category.name}</td>
-            <td>${category.description}</td>
             <td class="action-btns">
                 <a href="categories/edit/${category.id}">Edit</a>
                 <a href="categories/delete/${category.id}">Delete</a>

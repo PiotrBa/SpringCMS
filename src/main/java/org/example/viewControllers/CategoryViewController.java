@@ -35,7 +35,7 @@ public class CategoryViewController {
         return "add-category";
     }
     @PostMapping("/add")
-    public String create(@RequestParam String name, @RequestParam String description){
+    public String create(@RequestParam String name){
         Category category = new Category();
         category.setName(name);
         categoryDao.saveCategory(category);
@@ -49,7 +49,7 @@ public class CategoryViewController {
         return "edit-category";
     }
     @PostMapping("/edit")
-    public String editCategory(@RequestParam Long id, @RequestParam String name, @RequestParam String description){
+    public String editCategory(@RequestParam Long id, @RequestParam String name){
         Category category = categoryDao.findById(id);
         category.setName(name);
         categoryDao.updateCategory(category);

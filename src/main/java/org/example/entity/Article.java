@@ -1,8 +1,6 @@
 package org.example.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -30,14 +28,5 @@ public class Article {
     @Column(updatable = false)
     private LocalDateTime created;
     private LocalDateTime updated;
-
-
-    protected void onCreate(){
-        created = LocalDateTime.now();
-    }
-
-    protected void onUpdate(){
-        updated = LocalDateTime.now();
-    }
 
 }

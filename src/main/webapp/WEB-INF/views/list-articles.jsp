@@ -72,8 +72,8 @@
             <td>${article.created}</td>
             <td>${article.updated}</td>
             <td class="action-btns">
-                <a href="categories/edit/${article.id}">Edit</a>
-                <a href="categories/delete/${article.id}">Delete</a>
+                <a href="articles/edit/${article.id}">Edit</a>
+                <a href="articles/delete/${article.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>
