@@ -62,7 +62,7 @@
   <option value="${author.id}">${author.name}</option>
   </c:forEach>
 </select><br>
-  Category: <select name="categories" multiple="category"><br>
+  Category: <select name="categoryIds" multiple="multiple"><br>
   <c:forEach items="${categories}" var="category">
   <option value="${category.id}">${category.name}</option>
     </c:forEach>

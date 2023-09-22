@@ -47,19 +47,18 @@ public class ArticleViewController {
 
     @PostMapping("/add")
     public String create(@RequestParam String title, @RequestParam String content,
-                         @RequestParam Long authorId, @RequestParam Long categoryId){
+                         @RequestParam Long authorId, @RequestParam List<Long> categoryIds){
         Article article = new Article();
         article.setTitle(title);
         article.setContent(content);
         article.setCreated(LocalDateTime.now());
         Author author = authorDao.findByid(authorId);
         article.setAuthor(author);
-        article.setAuthor(author);
-        List<Category> category = (List<Category>) categoryDao.findById(categoryId);
-        article.setCategory(category);
+       for (Long categoryId :categoryIds){
+           Category category = categoryDao.findById(categoryId);
+           article.getCategories().add(category);
+       }
 
-
-        categoryDao.saveCategory((Category) category);
         authorDao.saveAuthor(author);
         articleDao.save(article);
         return "redirect:/articles";

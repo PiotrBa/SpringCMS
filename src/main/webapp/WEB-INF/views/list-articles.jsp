@@ -68,7 +68,13 @@
             <td>${article.title}</td>
             <td>${article.author.name}</td>
             <td>${article.content}</td>
-            <td>${article.category}</td>
+            <td>
+                <ul>
+                    <c:forEach items="${article.categories}" var="category">
+                        <li>name: ${category.name}</li>
+                    </c:forEach>
+                </ul>
+            </td>
             <td>${article.created}</td>
             <td>${article.updated}</td>
             <td class="action-btns">
