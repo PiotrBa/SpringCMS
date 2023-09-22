@@ -43,7 +43,7 @@ public class CategoryViewController {
 
     }
     @GetMapping("/edit/{id}")
-    public String showEditCadegory(@PathVariable Long id, Model model){
+    public String showEditCadegoryForm(@PathVariable Long id, Model model){
         Category category = categoryDao.findById(id);
         model.addAttribute("category", category);
         return "edit-category";

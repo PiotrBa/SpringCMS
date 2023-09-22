@@ -57,6 +57,6 @@
     <input type="submit" value="Add Category">
 </form>
 <br>
-<a href="../categories">Back to List</a>
+<a href="/categories">Back to List</a>
 </body>
 </html>

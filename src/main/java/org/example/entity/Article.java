@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "articles")
@@ -20,9 +21,9 @@ public class Article {
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
-    @ManyToOne
+    @ManyToMany
     @JoinTable(name = "article_category", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Category category;
+    private List<Category> category;
     private String content;
 
     @Column(updatable = false)

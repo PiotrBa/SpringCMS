@@ -68,7 +68,7 @@
             <td>${article.title}</td>
             <td>${article.author.name}</td>
             <td>${article.content}</td>
-            <td>${article.category.name}</td>
+            <td>${article.category}</td>
             <td>${article.created}</td>
             <td>${article.updated}</td>
             <td class="action-btns">

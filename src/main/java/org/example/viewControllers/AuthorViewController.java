@@ -45,7 +45,7 @@ public class AuthorViewController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditAuthor(@PathVariable Long id, Model model){
+    public String showEditAuthorForm(@PathVariable Long id, Model model){
         Author author = authorDao.findByid(id);
         model.addAttribute("author", author);
         return "edit-author";
@@ -59,8 +59,8 @@ public class AuthorViewController {
         return "redirect:/authors";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String deleteAuthor(@RequestParam Long id){
+    @GetMapping("/delete/{id}")
+    public String deleteAuthor(@PathVariable Long id){
         Author author = authorDao.findByid(id);
         authorDao.delete(author);
         return "redirect:/authors";

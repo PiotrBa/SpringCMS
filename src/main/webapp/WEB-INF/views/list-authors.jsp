@@ -49,6 +49,18 @@
             color: #595959;
             margin-right: 10px;
         }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            background-color: #e0e0e0;
+            padding: 16px;
+        }
+        th.name-header {
+            width: 60%;
+        }
     </style>
 </head>
 <body>
@@ -56,15 +68,15 @@
 <table>
     <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Last name</th>
+        <th class="name-header">Name</th>
+        <th>Actions</th>
     </tr>
     <c:forEach var="author" items="${authors}">
         <tr>
             <td>${author.id}</td>
             <td>${author.name}</td>
             <td>
-                <a href="authors/edit/${author.id}">Edit</a> |
+                <a href="authors/edit/${author.id}">Edit</a>
                 <a href="authors/delete/${author.id}">Delete</a>
             </td>
         </tr>

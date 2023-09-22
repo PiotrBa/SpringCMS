@@ -57,6 +57,6 @@
   <input type="submit" value="Add Author">
 </form>
 <br>
-<a href="../authors">Back to list</a>
+<a href="/authors">Back to list</a>
 </body>
 </html>

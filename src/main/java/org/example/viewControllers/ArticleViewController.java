@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Controller
@@ -39,30 +40,33 @@ public class ArticleViewController {
     @GetMapping("/add")
     public String showAddForm(Model model){
         model.addAttribute("article", new Article());
+        model.addAttribute("authors", authorDao.findAll());
+        model.addAttribute("categories", categoryDao.findAll());
         return "add-article";
     }
 
     @PostMapping("/add")
-    public String create(@RequestParam String title,  @RequestParam String content,
-                                     @RequestParam String name, @RequestParam String categoryName){
+    public String create(@RequestParam String title, @RequestParam String content,
+                         @RequestParam Long authorId, @RequestParam Long categoryId){
         Article article = new Article();
         article.setTitle(title);
         article.setContent(content);
         article.setCreated(LocalDateTime.now());
-        Author author = new Author();
-        author.setName(name);
+        Author author = authorDao.findByid(authorId);
         article.setAuthor(author);
-        Category category = new Category();
-        category.setName(categoryName);
+        article.setAuthor(author);
+        List<Category> category = (List<Category>) categoryDao.findById(categoryId);
+        article.setCategory(category);
 
-        categoryDao.saveCategory(category);
+
+        categoryDao.saveCategory((Category) category);
         authorDao.saveAuthor(author);
         articleDao.save(article);
         return "redirect:/articles";
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Long id, Model model){
+    public String showEditArticleForm(@PathVariable Long id, Model model){
         Article article = articleDao.findByid(id);
         model.addAttribute("article", article);
         return "edit-article";
@@ -81,9 +85,9 @@ public class ArticleViewController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteArticle(@PathVariable Long id, Model model){
+    public String deleteArticle(@PathVariable Long id){
         Article article = articleDao.findByid(id);
-        model.addAttribute("article", article);
+       articleDao.delete(article);
         return "redirect:/articles";
     }
 }

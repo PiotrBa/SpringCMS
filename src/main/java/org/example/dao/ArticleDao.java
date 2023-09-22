@@ -20,6 +20,7 @@ public class ArticleDao {
         entityManager.persist(article);
     }
 
+
     public void delete(Article article){
         entityManager.remove(entityManager.contains(article) ? article : entityManager.merge(article));
     }
