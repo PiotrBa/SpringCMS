@@ -32,7 +32,7 @@ Detailed description of the DAO layer with various methods facilitating data per
 - **CategoryDao**: Manages CRUD operations for the Category entity.
 
 ## View Controllers:
-These controllers mediate the data flow between the DAO layer and the views represented by Thymeleaf templates.
+These controllers mediate the data flow between the DAO layer and the views represented by jsp files.
 - **HomePageViewController**: Controls the home page view, displaying the latest articles.
 - **ArticleViewController**: Manages views related to articles, including listing, adding, editing, and deleting articles.
 - **AuthorViewController**: Manages views related to authors, including listing, adding, editing, and deleting authors.
