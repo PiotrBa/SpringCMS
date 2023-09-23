@@ -20,7 +20,6 @@ public class Article {
     @Column(length = 200)
     private String title;
     @ManyToOne
-    @JoinColumn(name = "author_id")
     private Author author;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Category> categories = new ArrayList<>();
