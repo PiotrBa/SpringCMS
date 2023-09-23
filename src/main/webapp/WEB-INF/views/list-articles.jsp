@@ -71,7 +71,7 @@
             <td>
                 <ul>
                     <c:forEach items="${article.categories}" var="category">
-                        <li>name: ${category.name}</li>
+                        <li>${category.name}</li>
                     </c:forEach>
                 </ul>
             </td>

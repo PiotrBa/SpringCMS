@@ -47,19 +47,17 @@ public class ArticleViewController {
 
     @PostMapping("/add")
     public String create(@RequestParam String title, @RequestParam String content,
-                         @RequestParam Long authorId, @RequestParam List<Long> categoryIds){
+                         @RequestParam Long authorId, @RequestParam List<Long> categoryIds) {
         Article article = new Article();
         article.setTitle(title);
         article.setContent(content);
         article.setCreated(LocalDateTime.now());
         Author author = authorDao.findByid(authorId);
         article.setAuthor(author);
-       for (Long categoryId :categoryIds){
-           Category category = categoryDao.findById(categoryId);
-           article.getCategories().add(category);
-       }
-
-        authorDao.saveAuthor(author);
+        for(Long categoryId:categoryIds){
+            Category category = categoryDao.findById(categoryId);
+            article.getCategories().add(category);
+        }
         articleDao.save(article);
         return "redirect:/articles";
     }
@@ -68,16 +66,23 @@ public class ArticleViewController {
     public String showEditArticleForm(@PathVariable Long id, Model model){
         Article article = articleDao.findByid(id);
         model.addAttribute("article", article);
+        model.addAttribute("authors", authorDao.findAll());
+        model.addAttribute("categories", categoryDao.findAll());
         return "edit-article";
     }
 
     @PostMapping("/edit")
-    public String editArticle(@RequestParam Long id, @RequestParam String title, @RequestParam String content, @RequestParam String name){
+    public String editArticle(@RequestParam Long id, @RequestParam String title, @RequestParam String content,
+                              @RequestParam Long authorId, @RequestParam List<Long> categoryIds){
         Article article = articleDao.findByid(id);
         article.setTitle(title);
         article.setContent(content);
-        Category category = categoryDao.findById(id);
-        category.setName(name);
+        Author author = authorDao.findByid(authorId);
+        article.setAuthor(author);
+        for(Long categoryId:categoryIds){
+            Category category = categoryDao.findById(categoryId);
+            article.getCategories().add(category);
+        }
         article.setUpdated(LocalDateTime.now());
         articleDao.update(article);
         return "redirect:/articles";

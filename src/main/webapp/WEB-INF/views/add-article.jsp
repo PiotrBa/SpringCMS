@@ -57,19 +57,21 @@
 <form action="add" method="POST">
   Title: <input type="text" name="title"><br>
   Content: <input type="text" name="content"><br>
-  Author: <select name="author"><br>
-  <c:forEach items="${authors}" var="author">
-  <option value="${author.id}">${author.name}</option>
-  </c:forEach>
-</select><br>
-  Category: <select name="categoryIds" multiple="multiple"><br>
-  <c:forEach items="${categories}" var="category">
-  <option value="${category.id}">${category.name}</option>
+  Author:
+  <select name="authorId"><br>
+    <c:forEach items="${authors}" var="author">
+      <option value="${author.id}">${author.name}</option>
     </c:forEach>
-</select><br>
+  </select><br>
+  Category:
+  <select name="categoryIds" multiple="multiple"><br>
+    <c:forEach items="${categories}" var="category">
+      <option value="${category.id}">${category.name}</option>
+    </c:forEach>
+  </select><br>
   <input type="submit" value="Add Article">
 </form>
 <br>
-<a href="../articles">Back to List</a>
+<a href="/articles">Back to List</a>
 </body>
 </html>

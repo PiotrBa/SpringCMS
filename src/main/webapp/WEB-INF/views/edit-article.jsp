@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -55,12 +56,22 @@
 <form action="../edit" method="POST">
     <input type="hidden" name="id" value="${article.id}">
     Title: <input type="text" name="title" value="${article.title}"><br>
-    Author: <input type="text" name="author" value="${article.author.name}"><br>
     Content: <input type="text" name="content" value="${article.content}"><br>
-    Category: <input type="text" name="category" value="${article.category.name}"><br>
+    Author:
+    <select name="authorId"><br>
+        <c:forEach items="${authors}" var="author">
+            <option value="${author.id}">${author.name}</option>
+        </c:forEach>
+    </select><br>
+    Category:
+    <select name="categoryIds" multiple="multiple"><br>
+        <c:forEach items="${categories}" var="category">
+            <option value="${category.id}">${category.name}</option>
+        </c:forEach>
+    </select><br>
     <input type="submit" value="Save">
 </form>
 <br>
-<a href="../articles">Back to List</a>
+<a href="/articles">Back to List</a>
 </body>
 </html>

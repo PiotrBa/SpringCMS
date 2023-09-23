@@ -23,7 +23,6 @@ public class Article {
     @JoinColumn(name = "author_id")
     private Author author;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "article_category", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories = new ArrayList<>();
     private String content;
 

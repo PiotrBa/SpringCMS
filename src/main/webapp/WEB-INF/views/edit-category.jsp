@@ -58,6 +58,6 @@
     <input type="submit" value="Save">
 </form>
 <br>
-<a href="../categories">Back to List</a>
+<a href="/categories">Back to List</a>
 </body>
 </html>
